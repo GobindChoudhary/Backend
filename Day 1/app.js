@@ -4,7 +4,7 @@ const http = require("http");
 
 const server = http.createServer((req, res) => {
   res.write("Hello, Client!");
-  res.end("GOBIND");
+  res.end("Hello ,world");
 });
 
 server.listen(3000, () => {
