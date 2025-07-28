@@ -1,0 +1,20 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  padding: 5px 10px;
+}
+.video {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 100vw;
+    height: 100vh;
+    padding: 5px 10px;
+    display: flex;
+  }
+  .video {
+    width: 20%;
+  }
+}
