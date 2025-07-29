@@ -24,7 +24,7 @@ const SongList = ({ songs }) => {
         >
           <div className="flex flex-col">
             <h3 className="text-lg font-bold text-gray-900">{song.title}</h3>
-            <p className="text-sm text-gray-600">{song.artist}</p>
+            <p className="text-sm text-gray-600 uppercase">{song.artist}</p>
           </div>
 
           {isPlaying === index && (
