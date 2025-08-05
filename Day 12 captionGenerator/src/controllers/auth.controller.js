@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 async function registerController(req, res) {
   const { userName, password } = req.body;
 
-  const isUserExist = userModel.findOne({ userName });
+  const isUserExist = await userModel.findOne({ userName });
 
   if (isUserExist) {
     return res.status(401).json({
