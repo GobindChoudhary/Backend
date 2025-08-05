@@ -26,7 +26,30 @@ async function registerController(req, res) {
   });
 }
 
-function loginController(req, res) {}
+async function loginController(req, res) {
+  const { userName, password } = req.body;
+
+  const user = await userModel.findOne({ userName });
+
+  if (!user) {
+    return res.status(401).json({
+      message: `user with name ${userName} doesn't exist`,
+    });
+  }
+
+  if (user.password != password) {
+    return res.status(401).json({
+      message: "Invalid Password",
+    });
+  }
+
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_URL);
+  res.cookie("token", token);
+  res.status(200).json({
+    message: "Loggedin successfully",
+    user,
+  });
+}
 
 function userController(req, res) {}
 
