@@ -7,7 +7,9 @@ const httpServer = createServer(app);
 const { text } = require("stream/consumers");
 
 const io = new Server(httpServer, {
-  /* options */
+  cors: {
+    origin: "http://localhost:5173", // Adjust
+  },
 });
 
 const chatHistory = [];
@@ -16,7 +18,7 @@ io.on("connection", (socket) => {
   console.log("A user connected:", socket.id);
 
   // chat message event
-  socket.on("chat message", async (msg) => {
+  socket.on("user-message", async (msg) => {
     chatHistory.push({
       role: "user",
       parts: [
